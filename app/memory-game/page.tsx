@@ -9,14 +9,14 @@ import { ArrowLeft, RotateCcw, Trophy } from "lucide-react"
 
 // Array de imagens para o jogo (facilmente substituível por URLs do Supabase Storage)
 const gameImages = [
-  { id: 1, src: "/placeholder.svg?height=100&width=100&text=🐶", alt: "Cachorro" },
-  { id: 2, src: "/placeholder.svg?height=100&width=100&text=🐱", alt: "Gato" },
-  { id: 3, src: "/placeholder.svg?height=100&width=100&text=🐰", alt: "Coelho" },
-  { id: 4, src: "/placeholder.svg?height=100&width=100&text=🦋", alt: "Borboleta" },
-  { id: 5, src: "/placeholder.svg?height=100&width=100&text=🍎", alt: "Maçã" },
-  { id: 6, src: "/placeholder.svg?height=100&width=100&text=🍌", alt: "Banana" },
-  { id: 7, src: "/placeholder.svg?height=100&width=100&text=🍓", alt: "Morango" },
-  { id: 8, src: "/placeholder.svg?height=100&width=100&text=🌻", alt: "Girassol" },
+  { id: 1, src: "🐶", alt: "Cachorro", isEmoji: true },
+  { id: 2, src: "🐱", alt: "Gato", isEmoji: true },
+  { id: 3, src: "🐰", alt: "Coelho", isEmoji: true },
+  { id: 4, src: "🦋", alt: "Borboleta", isEmoji: true },
+  { id: 5, src: "🍎", alt: "Maçã", isEmoji: true },
+  { id: 6, src: "🍌", alt: "Banana", isEmoji: true },
+  { id: 7, src: "🍓", alt: "Morango", isEmoji: true },
+  { id: 8, src: "🌻", alt: "Girassol", isEmoji: true },
 ]
 
 interface GameCard {
@@ -26,6 +26,7 @@ interface GameCard {
   alt: string
   isFlipped: boolean
   isMatched: boolean
+  isEmoji: boolean
 }
 
 export default function MemoryGamePage() {
@@ -60,6 +61,7 @@ export default function MemoryGamePage() {
         alt: image.alt,
         isFlipped: false,
         isMatched: false,
+        isEmoji: image.isEmoji,
       })
       // Segunda carta do par
       pairs.push({
@@ -69,6 +71,7 @@ export default function MemoryGamePage() {
         alt: image.alt,
         isFlipped: false,
         isMatched: false,
+        isEmoji: image.isEmoji,
       })
     })
 
@@ -194,6 +197,7 @@ export default function MemoryGamePage() {
               isMatched={card.isMatched}
               onClick={handleCardClick}
               disabled={isChecking}
+              isEmoji={card.isEmoji}
             />
           ))}
         </div>
