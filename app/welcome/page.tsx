@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { MusicPlayer } from "@/components/music-player"
-import { Calendar, Music, ArrowRight } from "lucide-react"
+import { Calendar, Music, ArrowRight, Brain } from "lucide-react"
 
 export default function WelcomePage() {
   const [user, setUser] = useState<any>(null)
@@ -26,6 +26,10 @@ export default function WelcomePage() {
 
   const goToMusic = () => {
     router.push("/music")
+  }
+
+  const goToMemoryGame = () => {
+    router.push("/memory-game")
   }
 
   if (!user) {
@@ -78,6 +82,16 @@ export default function WelcomePage() {
           >
             <Music className="w-8 h-8 mr-4" />
             Área de Música
+            <ArrowRight className="w-6 h-6 ml-4" />
+          </Button>
+
+          <Button
+            onClick={goToMemoryGame}
+            className="w-full h-20 text-xl font-semibold rounded-2xl bg-gradient-to-r from-orange-400 to-red-400 hover:from-orange-500 hover:to-red-500 text-white shadow-lg transition-all duration-200 hover:scale-105"
+            aria-label="Jogar jogo da memória"
+          >
+            <Brain className="w-8 h-8 mr-4" />
+            Jogo da Memória
             <ArrowRight className="w-6 h-6 ml-4" />
           </Button>
         </div>
